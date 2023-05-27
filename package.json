@@ -1,15 +1,10 @@
 {
-  "name": "webpage1",
+  "name": "blocksiem",
   "version": "1.0.0",
-  "description": "",
+  "description": "Proyecto de investigacion",
   "main": "index.js",
   "scripts": {
-    "//" : " dev <-- nodemon src/index.js",
-    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-    "start":"cross-env NODE_ENV=production node src/index.js",
-    "postinstall": "npm run build",
-    "build": "cross-env NODE_ENV=production webpack",
-    "server:dev": "webpack-dev-server"
+    "dev" : "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
