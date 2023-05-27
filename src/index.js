@@ -47,6 +47,13 @@ app.use('/devices', require('./routes/dispositivosRoute'));
 //Statics Files
 app.use(express.static(path.join(__dirname, 'public')));
 
+if (procces.env.NODE.ENV === 'production'){
+    app.use(express.static('/frontend/build'));
+    app.get("*", (req, res) => {
+        res.sendFile((_dirname + "/fronted/build"))
+    })
+}
+
 
 //Server is listening
 app.listen(app.get('port'), () => {
