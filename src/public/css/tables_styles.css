@@ -1,0 +1,23 @@
+table {
+    border: 1px solid #ddd;
+    width: 100%; /* Establece el ancho de la tabla */
+    font-size: 16px; /* Tamaño de fuente */
+    text-align: center; /* Alineación horizontal del contenido */
+  }
+  
+  th {
+    background-color: #f2f2f2; /* Fondo de las celdas de encabezado */
+    font-weight: bold; /* Fuente en negrita */
+    padding: 12px; /* Espaciado interno de la celda */
+    text-align: center;
+  }
+  
+  td {
+    border: 1px solid #ddd; /* Borde de las celdas */
+    padding: 12px; /* Espaciado interno de la celda */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Fondo de las filas pares */
+  }
+  
