@@ -9,8 +9,8 @@ const getAll   = async (req, res) => {
             const collection = db.collection('Node1');
             const data_0 = await collection.find().toArray();
             const data = data_0.map(e => ({
-                    period  : e.timestamp,
-                    critico : e.index
+                    x : formatDate(e.timestamp),
+                    y : e.index
                 }));
             res.send(data);
         }
@@ -19,4 +19,9 @@ const getAll   = async (req, res) => {
         }
     };
 
+function formatDate(fechaHora) {
+        const [fecha, hora] = fechaHora.split(' ');
+        const [dia, mes, anio] = fecha.split('/');
+        return anio + "-" + mes + "-" + dia + "T" + "00:00:00"; 
+}
 module.exports = { getAll }

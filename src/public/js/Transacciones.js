@@ -14,13 +14,15 @@ function tables(reg){
         let id          = document.createElement('td');
         let timestamp   = document.createElement('td');
         let dispositivo = document.createElement('td');
-        let detalle     = document.createElement('td')
+        let detalle     = document.createElement('td');
+        let sistema     = document.createElement('td');
         let bloque      = document.createElement('td');
         let estado      = document.createElement('td');
         id.innerHTML         = e.id;
         timestamp.innerHTML  = e.timestamp;
         dispositivo.innerHTML= e.dispositivo;
         detalle.innerHTML    = e.detalle;
+        sistema.innerHTML    = e.sistema;
         bloque.innerHTML     = e.bloque;
         estado.innerHTML     = e.estado;
         
@@ -28,6 +30,7 @@ function tables(reg){
         row.appendChild(timestamp);
         row.appendChild(dispositivo);
         row.appendChild(detalle);
+        row.appendChild(sistema);
         row.appendChild(bloque);
         row.appendChild(estado);
 

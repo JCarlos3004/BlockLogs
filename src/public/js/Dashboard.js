@@ -6,41 +6,113 @@ async function UpdateDataGraph(){
         const data   = await data_0.json();
         const data_1 = await fetch('logs/getall');
         const data_2 = await data_1.json();
-        console.log(data_2);
-        MorrisArea('morris-area-chart-1', data);
-        MorrisBar('chartContainer', data_2);
+        GraphLineBlock('#morris-area-chart-1', data);
+        GraphBarLogs('#chartContainer', data_2);
+        GraphLogs("#chart",data_2)
         document.getElementById("loadingOverlay").style.display = "none";
     }
     catch(e) {
         console.log(e);
     }
 }
-function MorrisArea(id, info){
-            Morris.Area ({
-                element: id,
-                data: info,
-                xkey: 'period', 
-                ykeys: ['critico'], 
-                labels: ['Critico'], 
-                pointSize: 2,
-                hideHover: 'auto',
-                resize: true
-            })
-        }
 
-// Datos del gráfico
-const chartData = [
-    { year: '2015', value: 10 },
-    { year: '2016', value: 20 },
-    { year: '2017', value: 15 },
-    { year: '2018', value: 25 },
-    { year: '2019', value: 30 }
-  ];
+
+
+function AgroupLogs(data){
+  const fechas   = data.map(item => item.timestamp);
+  const fechas_1 = fechas.filter((valor, indice) => {
+    return fechas.indexOf(valor) === indice;
+  });
+
+  const resultado = data.reduce((acumulador, elemento) => {
+    const { timestamp, sistema } = elemento;
+    if (!acumulador[timestamp]) {
+      acumulador[timestamp] = {};
+    }
+    if (!acumulador[timestamp][sistema]) {
+      acumulador[timestamp][sistema] = 0;
+    }
+    acumulador[timestamp][sistema]++;
+    return acumulador;
+  }, {});
   
-  // Crear el gráfico dinámico
-function MorrisBar(id, data_2){
-        let countByDetalle = {};
-        data_2.forEach((element) => {
+  // Añadir cero para sistemas faltantes en cada fecha
+  Object.values(resultado).forEach(objetoFecha => {
+    const sistemas = Object.keys(objetoFecha);
+    const todosSistemas = [...new Set(data.map(item => item.sistema))];
+    const sistemasFaltantes = todosSistemas.filter(sistema => !sistemas.includes(sistema));
+    sistemasFaltantes.forEach(sistema => {
+      objetoFecha[sistema] = 0;
+    });
+  });
+  const fechas0 = Object.keys(resultado);
+  const cantidadesCitrix = fechas0.map(fecha => resultado[fecha]['Citrix'] || 0);
+  const cantidadesAmdocs = fechas0.map(fecha => resultado[fecha]['Amdocs'] || 0);
+  return [fechas0, cantidadesCitrix, cantidadesAmdocs]
+}
+
+
+
+function GraphLogs(id,data){
+      const [fechas0, cantidadesCitrix, cantidadesAmdocs] = AgroupLogs(data)
+      const sumaTotal = cantidadesCitrix.map((cantidadCitrix, index) => cantidadCitrix + cantidadesAmdocs[index]);
+      let options = { series: [{ name: 'Citrix', type: 'column', data: cantidadesCitrix}, 
+                               { name: 'Amdocs', type: 'column', data: cantidadesAmdocs},
+                               { name: 'Total',  type: 'line',   data: sumaTotal }],
+                       chart: { height: 350, type: 'line', stacked: false },
+                  dataLabels: { enabled: false },
+                      stroke: { width: [1, 1, 4]},
+                       title: { text: 'Logs recopilados', align: 'left', offsetX: 110 },
+                       xaxis: { categories: fechas0, },
+                       yaxis: [ { axisTicks: { show: true, }, axisBorder: { show: true, color: '#008FFB' }, labels: { style: { colors: '#008FFB',}}, title: { text: "Logs Citrix", style: { color: '#008FFB', } }, tooltip: { enabled: true }},
+                                { seriesName: 'Income', opposite: true, axisTicks: { show: true, }, axisBorder: { show: true, color: '#00E396' }, labels: { style: { colors: '#00E396', }}, title: { text: "Logs Amdocs", style: { color: '#00E396', }},},
+                                { seriesName: 'Revenue', opposite: true, axisTicks: { show: true, }, axisBorder: { show: true, color: '#FEB019'}, labels: { style: { colors: '#FEB019',},}, title: { text: "Total", style: { color: '#FEB019',}} },
+                              ],
+                     tooltip: { fixed: { enabled: true, position: 'topLeft', offsetY: 30, offsetX: 60},},
+                      legend: { horizontalAlign: 'left', offsetX: 40}
+                    };
+
+      let chart = new ApexCharts(document.querySelector(id), options);
+      chart.render();
+}
+
+function AgroupGraphLine(data){
+  const groupedData = data.reduce((acc, item) => {
+    const { x, y } = item;
+    if (acc[x]) {
+      acc[x]++;
+    } else {
+      acc[x] = 1;
+    }
+    return acc;
+    },{});
+  const aggregatedData = Object.entries(groupedData).map(([x, y]) => ({ x, y }));
+  const newData = aggregatedData.map(item => ({
+          x: new Date(item.x),
+          y: item.y
+        }));
+  console.log(newData)
+  return newData;
+}
+
+function GraphLineBlock(id,data){
+  const datos = AgroupGraphLine(data);
+  let options = { series: [ {name: 'Mineria', data: datos }],
+                   chart: { type: 'area', stacked: false, height: 350, zoom: { type: 'x', enabled: true, autoScaleYaxis: true}, toolbar: {autoSelected: 'zoom'}},
+              dataLabels: { enabled: false },
+                 markers: { size: 0, },
+                   title: { text: 'Bloques minados', align: 'left' },
+                    fill: { type: 'gradient', gradient: { shadeIntensity: 1, inverseColors: false, opacityFrom: 0.5, opacityTo: 0, stops: [0, 90, 100]}, },
+                   yaxis: { title: { text: 'Cantidad' },},
+                   xaxis: { type: 'datetime' }};
+
+    let chart = new ApexCharts(document.querySelector(id), options);
+    chart.render();
+}
+
+function AgrupBarLogs(data){
+  let countByDetalle = {};
+        data.forEach((element) => {
             var detalle = element.detalle;
             if (countByDetalle[detalle]) {
                 countByDetalle[detalle]++;
@@ -48,32 +120,26 @@ function MorrisBar(id, data_2){
                 countByDetalle[detalle] = 1;
             }
          });
-         var resultArray = Object.entries(countByDetalle).map(function ([detalle, cantidad]) {
-            return { detalle: detalle, cantidad: cantidad };
+    let array = Object.entries(countByDetalle).map(function ([detalle, cantidad]) {
+          return  { detalle: detalle, cantidad: cantidad };
           });
-        let colors=[]
-        for (let i = 0; i < resultArray.length; i++) {
-            var color = getRandomColor(); // Función que genera un color aleatorio
-            colors.push(color);
-          }
-    Morris.Bar({
-            element: id, // ID del contenedor HTML
-            data: resultArray, // Datos del gráfico
-            barColors: colors,
-            xkey: 'detalle', // Nombre del campo para el eje X
-            ykeys: ['cantidad'], // Nombres de los campos para el eje Y
-            labels: ['cantidad'] // Etiquetas para los campos en el eje Y
-        });
+    const cantidades    = array.map(item => item.cantidad);
+    const detalles      = array.map(item => item.detalle);
+    return [Object.values(cantidades),Object.values(detalles)];
 }
 
 
-function getRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
+function GraphBarLogs(id, data){
+    let [Arraycantidad, Arraydetalle] = AgrupBarLogs(data)
+    let options = { series: [ { data: Arraycantidad }],
+                     chart: { height: 350, type: 'bar', events: { click: function(chart, w, e) { }} },
+               plotOptions: { bar: { columnWidth: '45%', distributed: true } },
+                dataLabels: { enabled: false },
+                    legend: { show: false },
+                     xaxis: { categories: Arraydetalle, labels: { style: { fontSize: '12px' } } }
+                  };
+    var chart = new ApexCharts(document.querySelector(id), options);
+    chart.render();
+}
 
 UpdateDataGraph();

@@ -24,7 +24,7 @@ const updateAll = async (req, res) => {
         for (const updatedItem of updateLogs) {
             await collection.updateMany(
                 { 'id' : { $eq: updatedItem.id }}, // Filtro para encontrar el documento específico
-                { $set  : { 'bloque': updatedItem.bloque.toString() }}, // Valores a actualizar
+                { $set : { 'bloque': (updatedItem.bloque - 1).toString(), 'estado': "Asignado" }}, // Valores a actualizar
                 { new:  true }
             );
         }
