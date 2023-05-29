@@ -16,6 +16,7 @@ function tables(reg){
         let dispositivo = document.createElement('td');
         let detalle     = document.createElement('td');
         let sistema     = document.createElement('td');
+        let criticidad = document.createElement('td');
         let bloque      = document.createElement('td');
         let estado      = document.createElement('td');
         id.innerHTML         = e.id;
@@ -23,6 +24,7 @@ function tables(reg){
         dispositivo.innerHTML= e.dispositivo;
         detalle.innerHTML    = e.detalle;
         sistema.innerHTML    = e.sistema;
+        criticidad.innerHTML = e.criticidad;
         bloque.innerHTML     = e.bloque;
         estado.innerHTML     = e.estado;
         
@@ -31,6 +33,7 @@ function tables(reg){
         row.appendChild(dispositivo);
         row.appendChild(detalle);
         row.appendChild(sistema);
+        row.appendChild(criticidad);
         row.appendChild(bloque);
         row.appendChild(estado);
 

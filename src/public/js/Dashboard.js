@@ -9,11 +9,43 @@ async function UpdateDataGraph(){
         GraphLineBlock('#morris-area-chart-1', data);
         GraphBarLogs('#chartContainer', data_2);
         GraphLogs("#chart",data_2)
+        GraphCriticidad("#graphpie",data_2)
+        //Agroupcrit(data_2)
         document.getElementById("loadingOverlay").style.display = "none";
     }
     catch(e) {
         console.log(e);
     }
+}
+
+
+
+function Agroupcrit(data){
+  const data_2 = data.map(item => ({ "criticidad" : item.criticidad, "cantidad" : 1 }));
+  const data_3 = data_2.reduce((sumTotal , {criticidad, cantidad}) => {sumTotal[criticidad] = (sumTotal[criticidad] || 0 ) + cantidad; return sumTotal; }, {})
+  const arraycrit = Object.entries(data_3).map( ([criticidad]) => criticidad)
+  const arraycant = Object.entries(data_3).map( ([,cantidad])   => cantidad)
+  return [arraycrit, arraycant];  
+}
+
+
+function GraphCriticidad(id, data){
+  const [arraycrit, arraycant] = Agroupcrit(data);
+  let options = { series: arraycant, 
+                   chart: { width: 460, type: 'donut', dropShadow: { enabled: true, color: '#111', top: -1, left: 3, blur: 3, opacity: 0.2 } },
+                  stroke: { width: 0,},
+             plotOptions: { pie: { donut: { labels: { show: true, total: { showAlways: true, show: true } } } } },
+                  labels: arraycrit,
+              dataLabels: { dropShadow: { blur: 3, opacity: 0.8 } },
+                    fill: { type: 'solid', colors: ['#40C060', '#ffff00', '#ff0000'], hover: { fillOpacity : 1} },
+                  states: { hover: { filter: 'none' } },
+                   theme: { palette: 'palette2' },
+                   title: { text: "Criticidad" },
+                  legend: { labels: { useSeriesColors: false }, markers: { fillColors: ['#40C060', '#ffff00', '#ff0000'] } },
+              responsive: [{ breakpoint: 480, options: { chart: { width: 200 }, legend: {  position: 'bottom' } } }] };
+
+  var chart = new ApexCharts(document.querySelector(id), options);
+  chart.render();
 }
 
 
@@ -91,7 +123,6 @@ function AgroupGraphLine(data){
           x: new Date(item.x),
           y: item.y
         }));
-  console.log(newData)
   return newData;
 }
 
