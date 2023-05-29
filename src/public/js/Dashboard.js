@@ -7,6 +7,7 @@ async function UpdateDataGraph(){
         const data_1 = await fetch('logs/getall');
         const data_2 = await data_1.json();
         GraphLineBlock('#morris-area-chart-1', data);
+        GraphLineBlock('#morris-area-chart-2', data);
         GraphBarLogs('#chartContainer', data_2);
         GraphLogs("#chart",data_2)
         GraphCriticidad("#graphpie",data_2)
@@ -32,7 +33,7 @@ function Agroupcrit(data){
 function GraphCriticidad(id, data){
   const [arraycrit, arraycant] = Agroupcrit(data);
   let options = { series: arraycant, 
-                   chart: { width: 460, type: 'donut', dropShadow: { enabled: true, color: '#111', top: -1, left: 3, blur: 3, opacity: 0.2 } },
+                   chart: { width: 440, type: 'donut', dropShadow: { enabled: true, color: '#111', top: -1, left: 3, blur: 3, opacity: 0.2 } },
                   stroke: { width: 0,},
              plotOptions: { pie: { donut: { labels: { show: true, total: { showAlways: false, show: true , label: 'Total de Logs' } } } } },
                 tooltip : { enabled: true, style: { fontSize: '12px' } },
