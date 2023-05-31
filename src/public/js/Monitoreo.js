@@ -46,7 +46,7 @@ function ListBloq(data,data_1){
         index.innerHTML = e.index;
         hash.innerHTML  = e.hash;
         bymine.innerHTML= "System";
-        trans.innerHTML = "";
+        trans.innerHTML = Object.values(e.data).length;
         timestamp.innerHTML= e.timestamp;
         detalle.className ="dt-control"
         detalle.innerHTML = "";
@@ -123,7 +123,7 @@ async function main(){
         TransAsig(data_1)
         TransPend(data_1)
         BloqMinados(data_3)
-        ListBloq(data_3,data_1)
+        ListBloq(data_3)
         TiemPromedio()
         let table;
         $(document).ready(function() {
