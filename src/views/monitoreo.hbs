@@ -1,0 +1,63 @@
+<head>
+    <link href="/css/monitoreo.css" rel="stylesheet">
+</head>
+<body>
+  <div id="wrapper">
+    <div id="page-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="monitoreo">
+            <h1>Monitoreo</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mon-1">
+            <i class="fa-solid fa-cube"></i>
+            Bloques minados
+            <div id="bloqmin"></div>
+          </div>
+          <div class="col-md-3 mon-1">
+            <i class="fa-regular fa-clock"></i>
+            Tiempo promedio de Minado
+            <div id="tiemprom"></div>
+          </div>
+          <div class="col-md-3 mon-1">
+            <i class="fa-solid fa-chart-simple"></i>
+            Transacciones asignadas
+            <div id="transasig"></div>
+          </div>
+          <div class="col-md-3 mon-1">
+            <i class="fa-regular fa-circle-question"></i>
+            Transacciones pendientes
+            <div id="transpend"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="px-0">
+            <div class="table-header">
+              <p>Bloques</p>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="ui celled table" style="width:100%" id="my-table">
+              <thead class="thead">
+                <tr>
+                  <th>Bloque</th>
+                  <th>Hash</th>
+                  <th>Minado Por</th>
+                  <th>N° Transacciones</th>
+                  <th>Fecha Minada</th>
+                  <th>Detalle</th>
+                </tr>
+              </thead>
+              <tbody id="tbodycontent">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Script -->
+  <script src="/js/Monitoreo.js"></script>
+</body>

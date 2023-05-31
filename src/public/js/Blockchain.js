@@ -126,8 +126,6 @@ function Popup(){
 
   if (!condition) {
     showLoadingPopup();
-
-    // Simular una carga durante 3 segundos
     setTimeout(function() {
       hideLoadingPopup();
       showNoLogsMessage();

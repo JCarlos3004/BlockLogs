@@ -21,4 +21,8 @@ router.get('/transacciones', (req, res) => {
 router.get('/perfil', (req, res) => {
     res.render('perfil.hbs')
 })
+
+router.get('/monitoreo', (req, res) => {
+    res.render('monitoreo.hbs')
+})
 module.exports = router;

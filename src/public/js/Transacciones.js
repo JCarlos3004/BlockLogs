@@ -1,9 +1,13 @@
 
 
 async function getRegistros(){
-    const registros = await fetch('/logs/getall');
-    const regjson   = await registros.json();
-    tables(regjson);
+    try {
+        const registros = await fetch('/logs/getall');
+        const regjson   = await registros.json();
+        tables(regjson);
+    }catch (e){
+        console.log(e)
+    }
 }
 
 function tables(reg){

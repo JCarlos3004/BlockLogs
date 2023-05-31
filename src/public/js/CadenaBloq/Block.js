@@ -2,9 +2,9 @@ const SHA256   = require('crypto-js/sha256');
 const Fecha = require('./Config');
 
 class Block {
-    constructor(index, data, previousHash=''){
+    constructor(index, data, timestamp, previousHash=''){
         this.index        = index,
-        this.timestamp    = Fecha,
+        this.timestamp    = timestamp,
         this.data         = data,
         this.previousHash = previousHash,
         this.nonce        = 0,

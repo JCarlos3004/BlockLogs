@@ -1,13 +1,15 @@
+const { Timestamp } = require('mongodb');
 const Block = require('./Block');
 
 class Blockchain {
     difficulty = 2; 
     constructor(){
-        this.chain = [this.MakeBlockGenesis()];
+        this.chain = []//[this.MakeBlockGenesis(index, data, timestamp)];
     }
 
-    MakeBlockGenesis(index, data){
-        return new Block(index, data , '0' );
+    MakeBlockGenesis(index, data, timestamp){
+        //return new Block(index, data, timestamp, '0' );
+        return this.chain.push(new Block(index, data, timestamp, '0' ))
     }
 
     getEndBlock(){
