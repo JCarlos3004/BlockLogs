@@ -42,11 +42,13 @@ function ListBloq(data,data_1){
         let trans       = document.createElement('td');
         let timestamp   = document.createElement('td');
         let detalle     = document.createElement('td');
+        row.className   = "dt-control"
         index.innerHTML = e.index;
         hash.innerHTML  = e.hash;
         bymine.innerHTML= "System";
         trans.innerHTML = "";
         timestamp.innerHTML= e.timestamp;
+        detalle.className ="dt-control"
         detalle.innerHTML = "";
         
         row.appendChild(index);
@@ -57,6 +59,59 @@ function ListBloq(data,data_1){
         row.appendChild(detalle);
         tbody.appendChild(row); 
     })
+}
+function format(d,data) {
+    let prevHash="";
+    let dataArr ="";
+    let timest  =";"
+    data.forEach((e) => {
+        if (parseInt(d[0]) === e.index) {
+            prevHash = e.previousHash
+            dataArr  = e.data
+            timest   = e.timestamp
+        }
+    })
+    // `d` is the original data object for the row
+    return (
+        '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+        '<tr>' +
+        '<td>N° Bloque:</td>' +
+        '<td>' +
+        d[0] +
+        '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Hash:</td>' +
+        '<td>' +
+        d[1] +
+        '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Previous Hash:</td>' +
+        '<td>'+
+        prevHash +
+        '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Data:</td>' +
+        '<td>'+
+        JSON.stringify(dataArr) +
+        '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Timestamp:</td>' +
+        '<td>'+
+        timest +
+        '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Duracion:</td>' +
+        '<td>'+
+        "-" +
+        '</td>' +
+        '</tr>' +
+        '</table>'
+    );
 }
 
 async function main(){
@@ -70,8 +125,23 @@ async function main(){
         BloqMinados(data_3)
         ListBloq(data_3,data_1)
         TiemPromedio()
+        let table;
         $(document).ready(function() {
-            $('#my-table').DataTable();
+            table = $('#my-table').DataTable();
+        });
+        $('#my-table tbody').on('click', 'td.dt-control', function () {
+            let tr = $(this).closest('tr');
+            let row = table.row(tr);
+            console.log(table.row(tr).data())
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            } else {
+                // Open this row
+                row.child(format(row.data(),data_3)).show();
+                tr.addClass('shown');
+            }
         });
     } catch(e){
         console.log(e)
