@@ -2,6 +2,7 @@
 
 function refreshDevices(){
     getDevices();
+    getDatabase();
 }
 
 
@@ -49,10 +50,11 @@ async function getDevices() {
     })
     $(document).ready(function() {
         $('#dataTables-example').DataTable();
+        $('#dataTables-example2').DataTable();
     });
   };
 
-function CheckConnection(){
+function getDatabase(){
 
 }
 getDevices();

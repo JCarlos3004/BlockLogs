@@ -23,7 +23,7 @@ function TransAsig(data){
 function TransPend(data){
     let cont_1 = 0;
     data.forEach((e) => {
-        if (e.bloque == "- "){
+        if (e.bloque == "-"){
             cont_1++
         } 
     })

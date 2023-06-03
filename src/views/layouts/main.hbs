@@ -64,6 +64,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.4/css/dataTables.semanticui.min.css" rel="stylesheet"> 
     
+    <!-- Navegador -->
+    <link href="/css/search-menu.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
     <div id="wrapper">
@@ -76,7 +79,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">BlockSIEM</a>
+                <a class="navbar-brand" href="index"><h2>BlockSIEM</h2></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -294,35 +297,31 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Buscar..." id="searchInput">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
+                                <button class="btn btn-default" type="button" id="searchButton">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
                             </div>
-                            <!-- /input-group -->
                         </li>
                         <li>
-                            <a class="active" href="index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a  href="index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a class="active" href="blockchain"><i class="fa fa-sitemap fa-fw"></i> Blockchain</a>
-                            <!-- /.nav-second-level -->
+                            <a  href="blockchain"><i class="fa fa-sitemap fa-fw"></i> Blockchain</a>
                         </li>
                         <li>
-                            <a class="active" href="monitoreo"><i class="fa fa-desktop fa-fw"></i> Monitoreo</a>
-                            <!-- /.nav-second-level -->
+                            <a  href="monitoreo"><i class="fa fa-desktop fa-fw"></i> Monitoreo</a>
                         </li>
                         <li>
-                            <a class="active" href="tables"><i class="fa fa-table fa-fw"></i> Dispositivos</a>
+                            <a  href="tables"><i class="fa fa-table fa-fw"></i> Dispositivos</a>
                         </li>
                         <li>
-                            <a class="active" href="transacciones"><i class="fa fa-edit fa-fw"></i> Transacciones</a>
+                            <a  href="transacciones"><i class="fa fa-edit fa-fw"></i> Transacciones</a>
                         </li>
                         <li>
-                            <a href="perfil"><i class="fa fa-wrench fa-fw"></i> Perfil de usuario</span></a>
-                            <!-- /.nav-second-level -->
+                            <a  href="perfil"><i class="fa fa-wrench fa-fw"></i> Perfil de usuario</span></a>
                         </li>
                     </ul>
                 </div>
@@ -369,10 +368,12 @@
     <!-- Custom Theme JavaScript -->
     <script src="/js/sb-admin-2.js"></script>
 
-
     <!-- AwesomeFont -->
     <script src="https://kit.fontawesome.com/6cb6bf632a.js" crossorigin="anonymous"></script>
 
+    <!-- Navegador -->
+    <script src="/js/search-menu.js" crossorigin="anonymous"></script>
+    
 </body>
 
 </html>

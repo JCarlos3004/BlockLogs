@@ -25,4 +25,5 @@ router.get('/perfil', (req, res) => {
 router.get('/monitoreo', (req, res) => {
     res.render('monitoreo.hbs')
 })
+
 module.exports = router;
