@@ -2,8 +2,8 @@ const express = require('express');
 const router  = express.Router();
 
 
-router.get(['/','/index'], (req, res) => {
-    res.render('index.hbs');
+router.get(['/','/index','/logs'], (req, res) => {
+    res.render('dashlogs.hbs');
 });
 
 router.get('/tables', (req, res) => {
@@ -24,6 +24,10 @@ router.get('/perfil', (req, res) => {
 
 router.get('/monitoreo', (req, res) => {
     res.render('monitoreo.hbs')
+})
+
+router.get('/blocks', (req, res) => {
+    res.render('dashblock.hbs')
 })
 
 module.exports = router;

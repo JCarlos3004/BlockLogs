@@ -50,11 +50,54 @@ async function getDevices() {
     })
     $(document).ready(function() {
         $('#dataTables-example').DataTable();
-        $('#dataTables-example2').DataTable();
     });
   };
 
-function getDatabase(){
+async function getDatabase(){
+  let cont_1=1
+  const devices_0 = await fetch('/devices/getall');
+  const devices   = await devices_0.json(); 
+  let devicesTable = document.getElementById('bdTable');
+  devicesTable.innerHTML = '';
+  devices.forEach(function(device) {
+        let row          = document.createElement('tr');
+        let id           = document.createElement('td');
+        let nombre       = document.createElement('td');
+        //let ip           = document.createElement('td');
+        let gestor       = document.createElement('td');
+        let LastConn     = document.createElement('td');
+        let statusCell   = document.createElement('td');
+        let option       = document.createElement('td');
 
+        id.innerHTML           = cont_1++
+        nombre.innerHTML       = "NodeBlock";
+        gestor.innerHTML       = "MongoDB";
+        //so.innerHTML           = device.OpSystem;
+        LastConn.innerHTML     = "-"
+        statusCell.innerHTML   = `
+                                  <i class="fa-solid fa-circle-check fa-lg" style="color: #05f02c;"></i>
+                                 `
+        option.innerHTML       = ` 
+                                  <button class="btn bg-transparent border-0">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #0861fd;"></i>
+                                  </button>
+                                  <button class="btn bg-transparent border-0">
+                                    <i class="fa-solid fa-trash" style="color: #fd1212;"></i>
+                                  </button>
+                                  `;
+        row.appendChild(id);
+        row.appendChild(nombre);
+        row.appendChild(gestor);
+        //row.appendChild(so);
+        row.appendChild(LastConn)
+        row.appendChild(statusCell);
+        row.appendChild(option)
+
+        devicesTable.appendChild(row); 
+  })
+  $(document).ready(function() {
+    $('#dataTables-example2').DataTable();
+});
 }
-getDevices();
+
+refreshDevices();

@@ -1,0 +1,73 @@
+<head>
+        <link href="/css/CargandoDashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>    
+    <div id="wrapper">
+       <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard Blocks</h1>
+                </div>
+            </div>
+            <ul class="nav">
+                <li id="section"><a href="/logs">Logs</a></li>
+                <li id="section"><a href="/blocks">Blocks</a></li>
+            </ul>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">0</div>
+                                    <br>
+                                    <div>Notificaciones</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/tables">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver dispositivos monitoreados</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div id="loadingOverlay">
+                <div id="loadingSpinner"></div>
+            </div>
+            <div class="row">   
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Cantidad de bloques minados
+                        </div>
+                        <div class="panel-body">
+                            <div id="morris-area-chart-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Casuisticas de Logs recopilados
+                        </div>
+                        <div class="panel-body">
+                            <div id="chartContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="/js/Dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</body>
