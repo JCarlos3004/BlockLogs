@@ -28,7 +28,10 @@ function AlertTransCrit(data){
       contTrans++
     }
   })
-  document.querySelector("#alertTransacc").innerHTML = contTrans;
+  let alertElement = document.querySelector("#alertTransacc");
+  if (alertElement) {
+    alertElement.innerHTML = contTrans;
+  }
 }
 
 //// FIN ALERTAS TRANSACCIONES CRITICAS ////
