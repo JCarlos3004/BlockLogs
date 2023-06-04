@@ -9,9 +9,9 @@ async function UpdateDataGraph(){
         GraphLineBlock('#morris-area-chart-1', data);
         GraphLineBlock('#morris-area-chart-2', data);
         GraphBarLogs('#chartContainer', data_2);
-        GraphLogs("#chart",data_2)
-        GraphCriticidad("#graphpie",data_2)
-        //Agroupcrit(data_2)
+        GraphLogs("#chart",data_2);
+        GraphCriticidad("#graphpie",data_2);
+        AlertTransCrit(data_2)
         document.getElementById("loadingOverlay").style.display = "none";
     }
     catch(e) {
@@ -19,8 +19,19 @@ async function UpdateDataGraph(){
     }
 }
 
+//// ALERTAS TRANSACCIONES CRITICAS ////
 
+function AlertTransCrit(data){
+  let contTrans=0
+  data.forEach((e) => {
+    if (e.criticidad == "Alta") {
+      contTrans++
+    }
+  })
+  document.querySelector("#alertTransacc").innerHTML = contTrans;
+}
 
+//// FIN ALERTAS TRANSACCIONES CRITICAS ////
 function Agroupcrit(data){
   const data_2 = data.map(item => ({ "criticidad" : item.criticidad, "cantidad" : 1 }));
   const data_3 = data_2.reduce((sumTotal , {criticidad, cantidad}) => {sumTotal[criticidad] = (sumTotal[criticidad] || 0 ) + cantidad; return sumTotal; }, {})

@@ -36,7 +36,3 @@
   margin-right: 10px; /* Añade espacio entre los elementos li */
   font-size: 15px;
 }
-
-.nav li:active {
-  background-color: gray; /* Color de fondo sombreado */
-}
