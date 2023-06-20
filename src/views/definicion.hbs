@@ -1,0 +1,61 @@
+<head>
+    <!-- Custom CSS -->
+    <link href="css/definicion.css" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="wrap">
+                        <div class="search">
+                            <input type="text" class="searchTerm" placeholder="Buscar campos">
+                            <button type="submit" class="searchButton">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3" id="DivCamposSeleccionados">
+                    <div class="CamposSeleccionados"> 
+                        <div class="IconCampoSelec">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="TituloCampoSelec">
+                            Campos seleccionados
+                        </div>
+                    </div>
+                    <div id="DataSeleccionada">
+                    </div>
+                </div>
+                <div class="col-lg-9" id="GraficoData">
+                </div>
+            </div>
+            <div class="row">                
+                <div class="col-lg-3" id="DivCamposDisponibles">
+                    <div class="CamposDisp"> 
+                        <div class="IconCampoDisp">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="TituloCampoDisp">
+                            Campos disponibles
+                        </div>
+                    </div>
+                    <div id="DataDisponible">
+                    <!-- JS --->
+                    </div>
+                </div>
+                 <div class="col-lg-9" id="AllDataSelec">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navegador -->
+    <script src="/js/definicion.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</body>

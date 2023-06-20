@@ -1,0 +1,128 @@
+#DataSeleccionada{
+    height: 220px;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+#DataDisponible{
+    height: 220px;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.DivDisponible{
+    display: flex;
+    justify-content: space-between;
+}
+
+.DivSeleccionados{
+    display: flex;
+    justify-content: space-between;
+}
+
+.DivDisponible2,
+.ItemIcono {
+    display: inline-block;
+    height:  30px;
+    margin-right: 7px;
+    margin-left: 10px;
+}
+
+.DivSeleccionados2,
+.ItemIcono {
+    display: inline-block;
+    height: 30px;
+    margin-right: 7px;
+    margin-left: 10px;
+}
+
+.DivDisponible:hover{
+    background: yellow;
+    cursor: pointer;
+}
+
+.ItemIcono{
+    color: #3374e6;
+  }
+  
+.ItemLista{
+    list-style-type: none;
+}
+
+.DivSeleccionados:hover{
+    background: yellow;
+    cursor: pointer;
+}
+
+.IconCampoSelec,
+.TituloCampoSelec {
+    display: inline-block;
+}
+
+.IconCampoDisp,
+.TituloCampoDisp {
+    display: inline-block;
+}
+
+.MostrarData {
+    display: inline-block;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-family: Helvetica, Arial, sans-serif;
+    min-width: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+th {
+    background-color: rgb(158, 165, 165);
+    color: #ffffff;
+    text-align: left;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+td {
+    font-size: 14px;
+}
+
+#AllDataSelec {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}

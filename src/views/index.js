@@ -30,4 +30,16 @@ router.get('/blocks', (req, res) => {
     res.render('dashblock.hbs')
 })
 
+router.get('/entrada', (req, res) => {
+    res.render('entrada.hbs')
+})
+
+router.get('/definicion', (req, res) => {
+    res.render('definicion.hbs')
+})
+
+router.get('/alertas', (req,res) => {
+    res.render('alertas.hbs')
+})
+
 module.exports = router;
