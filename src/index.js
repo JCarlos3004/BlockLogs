@@ -42,7 +42,7 @@ app.use('/dashboard', require('./routes/dashboardRoute'));
 app.use('/block', require('./routes/blockRoute'));
 app.use('/logs',  require('./routes/logRoute'));
 app.use('/devices', require('./routes/dispositivosRoute'));
-
+app.use('/logssave', require('./routes/logsSaveRoute'));
 
 //Statics Files
 app.use(express.static(path.join(__dirname, 'public')));

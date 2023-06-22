@@ -1,4 +1,75 @@
+.Titulo{
+    margin-top: 15px;
+}
+
 .MenuBar1{
     border: 0.5px solid black;
     padding: 10px;
+    border-radius: 2px;
+}
+
+.MenuBar2{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.iconrefresh, .divTextoAct {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.divActualizar {
+    align-items: center;
+    background-color: rgb(32, 69, 232);
+    border-radius: 10px;
+    color: white;
+    padding: 3px;
+}
+
+.crearAlerta, .classSeveridad, .classEstado, .classEtiqueta {
+    padding: 10px;
+    width: 20%;
+    margin-top: 20px;
+    margin-right: 3px;
+    margin-left: 3px;
+    padding: 0px;
+}
+
+
+.optionseveridad {
+    width: 240px;
+    height: 30px;
+    font-size: 15px;
+}
+
+
+.optionestado {
+    width: 240px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.optionetiquetas {
+    width: 240px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.divcreacion {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 440px;
+}
+  
+
+.iconobusqueda {
+    margin-right: 8px;
+    margin-left: 3px;
+}
+  
+
+.crearAlerta{
+    margin-right: 220px;
 }

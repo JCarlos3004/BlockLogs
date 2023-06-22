@@ -1,11 +1,21 @@
 #DataSeleccionada{
-    height: 220px;
+    height: 230px;
     overflow-y: auto;
     white-space: nowrap;
 }
 
+#DivCamposDisponibles{
+    border: 0.1px solid rgb(175, 175, 175);
+    border-radius: 5px;
+}
+
+#DivCamposSeleccionados{
+    border: 0.1px solid rgb(175, 175, 175);
+    border-radius: 5px;  
+}
+
 #DataDisponible{
-    height: 220px;
+    height: 230px;
     overflow-y: auto;
     white-space: nowrap;
 }
@@ -37,7 +47,7 @@
 }
 
 .DivDisponible:hover{
-    background: yellow;
+    background: rgb(122, 189, 238);
     cursor: pointer;
 }
 
@@ -50,18 +60,20 @@
 }
 
 .DivSeleccionados:hover{
-    background: yellow;
+    background: rgb(122, 189, 238);
     cursor: pointer;
 }
 
 .IconCampoSelec,
 .TituloCampoSelec {
     display: inline-block;
+    margin-bottom: 5px;
 }
 
 .IconCampoDisp,
 .TituloCampoDisp {
     display: inline-block;
+    margin-bottom: 5px;
 }
 
 .MostrarData {
@@ -78,10 +90,10 @@ th {
     color: #ffffff;
     text-align: left;
     font-size: 14px;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
+
 
 td {
     font-size: 14px;
@@ -89,6 +101,8 @@ td {
 
 #AllDataSelec {
     overflow-x: auto;
+    overflow-y: auto;
+    max-height: 500px;
     white-space: nowrap;
 }
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
@@ -117,7 +131,7 @@ td {
 
 .searchButton {
   width: 40px;
-  height: 36px;
+  height: 35px;
   border: 1px solid #00B4CC;
   background: #00B4CC;
   text-align: center;
@@ -126,3 +140,111 @@ td {
   cursor: pointer;
   font-size: 20px;
 }
+
+.buscador {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 35px;
+}
+
+.itemX{
+    color: red;
+}
+
+.itemCruz{
+    color: azul;
+}
+
+.divActualizar{
+    margin-top: 10px;
+    width: 130px;
+    background-color: #3374e6;
+    border-radius: 3px;
+    font-size: 16px;
+    color: white;
+    margin-left: 320px;
+    height: 35px;
+
+}
+
+.iconRefresh, .divTextoAct{
+    display: inline-block;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+
+.divCalender {
+    margin-top: 10px;
+    border: 0.5px solid black;
+    border-radius: 3px;
+    width: 300px;
+    margin-left: 320px;
+    height: 35px;
+}
+.spanIcon, .divFecha {
+    display: inline-block;
+}
+
+.divFecha {
+    margin-left: 50px;
+}
+
+.divSave{
+    margin-top: 10px;
+    width: 130px;
+    background-color: #3374e6;
+    border-radius: 3px;
+    font-size: 16px;
+    color: white;
+    margin-left: 150px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.iconSave, .divTextoAct {
+    margin-left: 15px;
+}
+
+
+.classbuscador{
+    margin-left: 0px;
+    padding: 0px;
+}
+
+/** MODAL **/
+dialog {
+    padding:8px;
+    border-radius: 5px;
+}
+
+#modal{
+    border: 2px;
+    width:  455px;
+    height: 500px;
+}
+
+dialog h2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#textArea{
+    margin-top: 5px;
+    height: 200px;
+}
+
+p{
+    margin-top: 3px;
+}
+
+#modal::backdrop{
+    background-color: rgba(0, 0, 0, .55);
+}
+
+#btn-guardar-modal {
+    margin-left: 290px;
+}
+  
+/** FIN MODAL **/

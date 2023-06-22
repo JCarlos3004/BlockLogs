@@ -6,18 +6,53 @@
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-3 classbuscador">
                     <div class="wrap">
-                        <div class="search">
-                            <input type="text" class="searchTerm" placeholder="Buscar campos">
-                            <button type="submit" class="searchButton">
-                                <i class="fa fa-search"></i>
-                            </button>
+                        <div class="input-group custom-search-form buscador">
+                            <input type="text" class="form-control" placeholder="Buscar campo..." id="searchInput">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="searchButton">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    
+                <div class="col-lg-3">
+                    <div class="wrap">
+                        <div class="input-group custom-search-form divCalender"> 
+                            <span class="input-group-btn spanIcon">
+                                <button class="btn btn-default" type="button" id="searchButton">
+                                    <i class="fa-solid fa-calendar-days" style="color: #235fc7;"></i>
+                                </button>
+                            </span>
+                            <div class="divFecha">Hasta hoy</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="divActualizar">
+                        <i class="fa-solid fa-arrows-rotate iconRefresh" style="color: #84d2e1;"></i>
+                        <div class="divTextoAct">Actualizar</div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="divSave" id="Guardar">
+                        <i class="fa-solid fa-floppy-disk iconSave" style="color: #f7f7f7;"></i>
+                        <div class="divTextoAct">Guardar</div>
+                        <dialog id="modal">
+                            <h2>Guardar estructura</h2>
+                            <p>Titulo</p>
+                            <input id="inputTitulo" type="text" class="form-control" placeholder="Ingrese titutlo" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <p>Descripcion</p>
+                            <textarea class="form-control" aria-label="With textarea" id="textArea"></textarea>
+                            <p>Etiqueta</p>
+                            <input id="inputEtiqueta" type="text" class="form-control" placeholder="Ingrese etiqueta" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <p></p>
+                            <button class="btn btn-primary" id="btn-cerrar-modal">Cerrar</button>
+                            <button class="btn btn-primary" id="btn-guardar-modal">Guardar</button>
+                        </dialog>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -48,6 +83,7 @@
                     </div>
                     <div id="DataDisponible">
                     <!-- JS --->
+
                     </div>
                 </div>
                  <div class="col-lg-9" id="AllDataSelec">
@@ -56,6 +92,6 @@
         </div>
     </div>
     <!-- Navegador -->
-    <script src="/js/definicion.js" crossorigin="anonymous"></script>
+    <script src="/js/definicion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </body>
