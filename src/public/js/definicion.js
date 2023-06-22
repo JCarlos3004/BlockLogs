@@ -193,7 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const info = await GuardarInfo(cabeceras);
     let Array = []
     let Obj   = {}
-    //Obj["titulo"]     = titulo
     Obj["titulo"] = titulo
     Array.push(Obj)
     Obj["descripcion"] = descripcion
