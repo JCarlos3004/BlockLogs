@@ -203,6 +203,9 @@ document.addEventListener('DOMContentLoaded', function() {
     Array.push(Obj)
     SaveLogs(Array[0])
     if (modal.hasAttribute('open')){
+      inputTitulo.value = '';
+      textArea.value = '';
+      inputEtiqueta.value = '';
       modal.close();
     }
   });
@@ -210,7 +213,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function SaveLogs(data){
-  console.log(data);
   try {
     await fetch("/logssave/create",  {
       method : 'POST',
@@ -224,8 +226,74 @@ async function SaveLogs(data){
 }
 
 
+async function ShowLogs() {
+  try {
+    const data = await fetch("logssave/getall");
+    const response = await data.json();
+    
+    if (Array.isArray(response) && response.length > 0) {
+      const defSave = document.getElementById("tbodyGuardados");
+
+      response.forEach((e, index) => {
+        let tr = document.createElement('tr');
+        let tdId = document.createElement('td');
+        let tdTitulo = document.createElement('td');
+        let tdDescripcion = document.createElement('td');
+
+        tdId.innerHTML = index + 1;
+        tdTitulo.innerHTML = e.titulo;
+        tdDescripcion.innerHTML = e.descripcion;
+
+        tr.appendChild(tdId);
+        tr.appendChild(tdTitulo);
+        tr.appendChild(tdDescripcion);
+
+        defSave.appendChild(tr);
+      });
+
+    } else {
+      console.log("No hay datos disponibles para mostrar en la tabla.");
+    }
+    initializeDataTable()
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', function(){
+  let Configuraciones = document.getElementById('RecovConfig');
+  let modal1 = document.getElementById('modal-1')
+  let CerrarModal = document.getElementById('btn-cerrar-modal-1')
+  Configuraciones.addEventListener('click', ()=> {
+    modal1.showModal();
+  })
+  CerrarModal.addEventListener('click', ()=> {
+    modal1.close()
+  })
+})
+
+
+function initializeDataTable() {
+    $(document).ready(function () {
+      $('#example').DataTable({
+        language: { search: "Titulo: " },
+        paginate: {
+          previous: "Anterior",
+          next: "Siguiente"
+        },
+        info: false,
+        columnDefs: [ { width: '40px', targets: 0, className: 'dt-center'},
+                      { className: 'dt-center', targets: '_all' }
+                    ],
+      }); 
+    });
+};
+
+ShowLogs();
 obtenerLogs();
 GuardarInfo(cabeceras);
+
 
 
 

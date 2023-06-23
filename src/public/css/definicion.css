@@ -1,3 +1,58 @@
+
+/** INTRODUCCION **/
+.introd{
+    padding: 0px;
+}
+
+.introduccion {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+.parrafo { 
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.h1 {
+    margin-bottom: 5px;
+}
+/** FIN INTRODUCCION **/
+
+
+/** CONFIGURACIONES **/
+.configuraciones {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 45px;
+
+}
+
+.configuraciones .h3 {
+    margin-left: auto;
+  }
+
+.configuraciones .h3:hover {
+    text-decoration: underline;
+  }
+  
+
+.h3 {
+    font-size: 16px;
+    color:#3374e6;  
+    cursor: pointer;
+  }
+/** FIN CONFIGURACIONES **/
+
+
+
+
+
 #DataSeleccionada{
     height: 230px;
     overflow-y: auto;
@@ -178,10 +233,12 @@ td {
     margin-top: 10px;
     border: 0.5px solid black;
     border-radius: 3px;
-    width: 300px;
-    margin-left: 320px;
+    width: 320px;
+    margin-left: 300px;
     height: 35px;
 }
+
+
 .spanIcon, .divFecha {
     display: inline-block;
 }
@@ -248,3 +305,91 @@ p{
 }
   
 /** FIN MODAL **/
+
+/** MODAL **/
+dialog {
+    padding:8px;
+    border-radius: 5px;
+}
+
+#modal-1{
+    border: 2px;
+    width: 690px;
+    height: 500px;
+}
+
+dialog h2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#textArea{
+    margin-top: 5px;
+    height: 200px;
+}
+
+p{
+    margin-top: 3px;
+}
+
+#modal::backdrop{
+    background-color: rgba(0, 0, 0, .55);
+}
+
+#btn-cerrar-modal-1 {
+    margin-left: 300px;
+}
+  
+/** FIN MODAL **/
+
+
+/** BUSQUEDA **/
+
+
+.input-group-1 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-group-1 .form-control {
+    flex-grow: 1;
+  }
+  
+  .input-group-1 .input-group-append {
+    margin-left: -1px;
+  }
+  
+  
+/** FIN BUSQUEDA **/
+
+
+/** TABLA **/
+
+.container {
+    width: auto;
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+th {
+    color:black;
+
+}
+
+#example td,
+#example th {
+    border: none; /* Eliminar bordes de las celdas */
+    padding: 8px; /* Ajustar el espacio interno de las celdas */
+  }
+  
+#example_wrapper .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody table {
+    border: none; /* Eliminar bordes de la tabla */
+  }
+
+  .dt-center {
+    text-align: center;
+  }
+  
+/** FIN TABLA **/

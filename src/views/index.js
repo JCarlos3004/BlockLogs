@@ -42,4 +42,8 @@ router.get('/alertas', (req,res) => {
     res.render('alertas.hbs')
 })
 
+router.get('/reglas', (req, res) => {
+    res.render('reglas.hbs')
+})
+
 module.exports = router;

@@ -2,7 +2,15 @@ const LogsSave = require('../database/mongodb/models/LogsSaveModel');
 const connect  = require('../database/database');
 
 const getAll = async (req, res) => {
-    //
+    try {
+        const db         = await connect();
+        const collection = db.collection('LogsSave');
+        const data       = await collection.find().toArray();
+        res.send(JSON.stringify(data));
+    }
+    catch (e) {
+        console.log(e)
+    }
 };
 
 const updateAll = async (req, res) => {

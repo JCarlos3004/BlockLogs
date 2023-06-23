@@ -1,10 +1,48 @@
 <head>
     <!-- Custom CSS -->
     <link href="css/definicion.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="wrapper">
         <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-6 introd">
+                    <div class="introduccion">
+                        <h1 class="h1">Definicion de logs</h1>
+                        <p class="parrafo">En esta seccion podrá definir la estructura de logs a analizar</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 config">
+                    <div class="configuraciones">
+                        <h3 class="h3" id="RecovConfig">Ver configuraciones guardadas</h3>
+                        <dialog id="modal-1">
+                            <h2>Busqueda</h2>
+                            <div class="input-group-1 mb-3">
+                                <input type="search" id="example_filter" class="form-control dataTables_filter" placeholder="Titulo" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary" type="button"><i class="fa-solid fa-magnifying-glass" style="color: #0a5ae6;"></i></button>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <table id="example" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Titulo</th>
+                                            <th>Etiquetas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyGuardados">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button class="btn btn-primary" id="btn-cerrar-modal-1">Cerrar</button>
+                        </dialog>
+                    </div>
+                </div>
+            </div>
+             <hr class="hr">
             <div class="row">
                 <div class="col-lg-3 classbuscador">
                     <div class="wrap">
@@ -28,6 +66,7 @@
                             </span>
                             <div class="divFecha">Hasta hoy</div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -92,6 +131,8 @@
         </div>
     </div>
     <!-- Navegador -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="/js/definicion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </body>

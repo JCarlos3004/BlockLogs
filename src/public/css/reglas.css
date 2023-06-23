@@ -1,0 +1,118 @@
+.Titulo{
+    margin-top: 15px;
+}
+
+.reglas {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+.import-rules, .create-rules {
+    margin-top: 20px;
+    background-color: rgb(48, 164, 240);
+    width: 120px;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: white;
+}
+
+.import-rules {
+    margin-left: 520px;
+}
+
+.create-rules {
+    margin-left: 240px;
+}
+
+
+.sub-reglas-0 {
+    width: 80px;
+}
+
+.sub-mon-reglas-0{
+    width: 200px;
+}
+
+.sub-reglas, .sub-mon-reglas {
+
+    cursor: pointer;
+}
+
+.sub-reglas:hover, .sub-mon-reglas:hover {
+    text-decoration: underline;
+    color: rgb(11, 115, 235);
+}
+
+
+.table-rules {
+    font-size: 14px
+}
+
+/* CSS */
+.table-rules {
+    border-collapse: collapse;
+  }
+  
+  .table-rules th,
+  .table-rules td {
+    border: none;
+  }
+  
+  .table-rules th:not(:last-child),
+  .table-rules td:not(:last-child) {
+    border-right: none;
+  }
+
+.menu {
+    margin-bottom: 50px;
+  }
+
+.busqueda {
+    padding: 0px;
+    display: flex;
+    align-items: center;
+  }
+  
+.busqueda input {
+    margin-right: 10px;
+
+  }
+
+.etiqueta {
+    text-align: right;
+    margin-left: 250px;
+}
+
+.personalizadas {
+    text-align: right;
+    width: 150px;
+    padding: 0px;
+  }
+
+  .etiqueta:hover, .personalizadas:hover {
+    margin-bottom: 10px;
+    color: #3374e6;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 5px;
+  }
+  
+  .search-container input {
+    margin-right: 5px;
+  }
+  
+  .search-container i {
+    margin-left: 5px;
+  }
+  
