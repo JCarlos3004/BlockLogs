@@ -1,6 +1,6 @@
 
 /** INTRODUCCION **/
-.divTextoAct, .iconRefresh, .divActualizar {
+ .divPuntero{
     cursor: pointer;
 }
 .introd{
