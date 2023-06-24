@@ -1,5 +1,8 @@
 
 /** INTRODUCCION **/
+.divTextoAct, .iconRefresh, .divActualizar {
+    cursor: pointer;
+}
 .introd{
     padding: 0px;
 }
@@ -391,5 +394,5 @@ th {
   .dt-center {
     text-align: center;
   }
-  
+
 /** FIN TABLA **/
