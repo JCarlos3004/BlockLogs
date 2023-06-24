@@ -118,9 +118,14 @@ function AgroupLogs(data){
       objetoFecha[sistema] = 0;
     });
   });
-  const fechas0 = Object.keys(resultado);
-  const cantidadesCitrix = fechas0.map(fecha => resultado[fecha]['Citrix'] || 0);
-  const cantidadesAmdocs = fechas0.map(fecha => resultado[fecha]['Amdocs'] || 0);
+  const clavesOrdenadas = Object.keys(resultado).sort();
+  const nuevoObjeto = {};
+  clavesOrdenadas.forEach((clave) => {
+    nuevoObjeto[clave] = resultado[clave];
+  });
+  const fechas0 = Object.keys(nuevoObjeto);
+  const cantidadesCitrix = fechas0.map(fecha => nuevoObjeto[fecha]['Citrix'] || 0);
+  const cantidadesAmdocs = fechas0.map(fecha => nuevoObjeto[fecha]['Amdocs'] || 0);
   return [fechas0, cantidadesCitrix, cantidadesAmdocs]
 }
 
