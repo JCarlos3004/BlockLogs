@@ -1,18 +1,32 @@
-
+const intervalId = setInterval(getLogsSave, 3000);
 
 async function getLogsSave(){
-    const logs = await fetch('/logssave/getall');
-    const data = await logs.json();
-    const listaFuente = document.getElementById('idListFuente')
-    const select = document.createElement('select');
-    select.className = 'listFuente'
-    data.forEach((e) => {
-        let option = document.createElement('option')
-        option.value = e.titulo
-        option.innerHTML = e.titulo
-        select.appendChild(option)
-    })
-    listaFuente.append(select)
+    try {
+        await fetch('/logssave/getall')
+            .then (response => {
+                if (response.ok){
+                    clearInterval(intervalId)
+                }
+                return response.json()
+            })
+    //const logs = await fetch('/logssave/getall');
+            .then (data => {
+                //const data = await logs.json();
+                const listaFuente = document.getElementById('idListFuente')
+                const select = document.createElement('select');
+                select.className = 'listFuente'
+                data.forEach((e) => {
+                    let option = document.createElement('option')
+                    option.value = e.titulo
+                    option.innerHTML = e.titulo
+                    select.appendChild(option)
+                })
+                listaFuente.append(select)
+            })
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 
@@ -26,6 +40,7 @@ function MakeRegla(){
     const programacionPeriodo = document.getElementById("Periodo").value;
     let dicc  = {}
     dicc.nombreRegla = nombreRegla
+    dicc.fuente      = fuente
     dicc.riesgo      = puntuacionRiesgo
     dicc.descripcion = descripcion
     dicc.severidad   = severidad
@@ -116,8 +131,8 @@ async function SaveRule(data){
 
 
 document.addEventListener('DOMContentLoaded', function(){
+        getLogsSave()    
         ShowRules()
-        getLogsSave()
         let createRules = document.getElementById('create-rules-id');
         let modal = document.getElementById('modal')
         let GuardarModal = document.getElementById('btn-guardar-modal')
