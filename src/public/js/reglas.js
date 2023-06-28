@@ -21,7 +21,15 @@ async function getLogsSave() {
         console.log(e);
     }
 }
-const intervalId = setInterval(getLogsSave, 3000);
+
+let BoolLogsSave = true;
+
+const intervalId = setInterval(() => {
+  if (BoolLogsSave) {
+    getLogsSave();
+    BoolLogsSave = false; // Actualiza el indicador después de la primera ejecución
+  }
+}, 3000);
 
 function MakeRegla(){
     const nombreRegla = document.getElementById("idNombreRegla").value;
@@ -46,48 +54,60 @@ function MakeRegla(){
     SaveRule(dicc)
 }
 
+
 async function ShowRules(){
     const logs = await fetch('/reglas/getall');
-    const data = await logs.json();
-    console.log(data)
-    const showRule = document.getElementById('showrules')
-    data.forEach((e) => {
-        let tr   = document.createElement('tr');
-        let td_0 = document.createElement('td')
-        let td   = document.createElement('td')
-        let td_1 = document.createElement('td')
-        let td_2 = document.createElement('td')
-        let td_3 = document.createElement('td')
-        let td_4 = document.createElement('td')
-        let td_5 = document.createElement('td')
-        let td_6 = document.createElement('td')
-        let td_7 = document.createElement('td')
-        let td_8 = document.createElement('td')
-        let td_9 = document.createElement('td')
-        td_0.innerHTML = '1'
-        td.innerHTML   = e.nombreRegla
-        td_1.innerHTML = e.riesgo 
-        td_2.innerHTML = e.severidad
-        td_3.innerHTML = e.ultejecucion
-        td_4.innerHTML = e.ultrespuesta
-        td_5.innerHTML = e.ultactualiza
-        td_6.innerHTML = '-'
-        td_7.innerHTML = '-'
-        td_8.innerHTML = '-'
-        tr.appendChild(td_0)
-        tr.appendChild(td)
-        tr.appendChild(td_1)
-        tr.appendChild(td_2)
-        tr.appendChild(td_3)
-        tr.appendChild(td_4)
-        tr.appendChild(td_5)
-        tr.appendChild(td_6)
-        tr.appendChild(td_7)
-        tr.appendChild(td_8)
-        showRule.appendChild(tr)
-    })
-}
+    if (logs.ok ) {
+        const data = await logs.json();
+        console.log(data)
+        const showRule = document.getElementById('showrules')
+        let id = 1;
+        data.forEach((e) => {
+            let tr   = document.createElement('tr');
+            let td_0 = document.createElement('td')
+            let td   = document.createElement('td')
+            let td_1 = document.createElement('td')
+            let td_2 = document.createElement('td')
+            let td_3 = document.createElement('td')
+            let td_4 = document.createElement('td')
+            let td_5 = document.createElement('td')
+            let td_6 = document.createElement('td')
+            let td_7 = document.createElement('td')
+            let td_8 = document.createElement('td')
+            td_0.innerHTML = id
+            td.innerHTML   = e.nombreRegla
+            td_1.innerHTML = e.riesgo 
+            td_2.innerHTML = e.severidad
+            td_3.innerHTML = e.ultejecucion
+            td_4.innerHTML = e.ultrespuesta
+            td_5.innerHTML = e.ultactualiza
+            td_6.innerHTML = '-'
+            td_7.innerHTML = '-'
+            td_8.innerHTML = '-'
+            tr.appendChild(td_0)
+            tr.appendChild(td)
+            tr.appendChild(td_1)
+            tr.appendChild(td_2)
+            tr.appendChild(td_3)
+            tr.appendChild(td_4)
+            tr.appendChild(td_5)
+            tr.appendChild(td_6)
+            tr.appendChild(td_7)
+            tr.appendChild(td_8)
+            showRule.appendChild(tr) 
+            id++;
+        })
+        clearInterval(intervalId2);
+    }}
 
+    let isFirstExecution = true; // Variable para indicar si es la primera ejecución
+
+    const intervalId2 = setInterval(() => {
+      if (isFirstExecution) {
+        ShowRules();
+        isFirstExecution = false; // Actualiza el indicador después de la primera ejecución
+      }
+    }, 3000);
 
 function showRangeValue(value) {
   document.getElementById("rangeValue").textContent = value;
