@@ -63,6 +63,7 @@ async function ShowRules(){
         let td_6 = document.createElement('td')
         let td_7 = document.createElement('td')
         let td_8 = document.createElement('td')
+        let td_9 = document.createElement('td')
         td_0.innerHTML = '1'
         td.innerHTML   = e.nombreRegla
         td_1.innerHTML = e.riesgo 
