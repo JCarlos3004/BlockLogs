@@ -1,34 +1,27 @@
-const intervalId = setInterval(getLogsSave, 3000);
 
-async function getLogsSave(){
+
+async function getLogsSave() {
     try {
-        await fetch('/logssave/getall')
-            .then (response => {
-                if (response.ok){
-                    clearInterval(intervalId)
-                }
-                return response.json()
-            })
-    //const logs = await fetch('/logssave/getall');
-            .then (data => {
-                //const data = await logs.json();
-                const listaFuente = document.getElementById('idListFuente')
-                const select = document.createElement('select');
-                select.className = 'listFuente'
-                data.forEach((e) => {
-                    let option = document.createElement('option')
-                    option.value = e.titulo
-                    option.innerHTML = e.titulo
-                    select.appendChild(option)
-                })
-                listaFuente.append(select)
-            })
-    }
-    catch (e) {
-        console.log(e)
+        const response = await fetch('/logssave/getall');
+        if (response.ok) {
+            const data = await response.json();
+            const listaFuente = document.getElementById('idListFuente');
+            const select = document.createElement('select');
+            select.id = 'listFuente';
+            data.forEach((e) => {
+                let option = document.createElement('option');
+                option.value = e.titulo;
+                option.innerHTML = e.titulo;
+                select.appendChild(option);
+            });
+            listaFuente.appendChild(select);
+            clearInterval(intervalId);
+        }
+    } catch (e) {
+        console.log(e);
     }
 }
-
+const intervalId = setInterval(getLogsSave, 3000);
 
 function MakeRegla(){
     const nombreRegla = document.getElementById("idNombreRegla").value;
