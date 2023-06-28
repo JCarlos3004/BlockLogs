@@ -2,6 +2,11 @@
     margin-top: 15px;
 }
 
+#modal {
+  border-radius: 4px;
+}
+
+
 .reglas {
     display: flex;
     margin-top: 15px;
@@ -116,3 +121,67 @@
     margin-left: 5px;
   }
   
+  .create-rules:hover{
+    cursor: pointer;
+  }
+
+  .listaDesplegable{
+    width: 200px;
+    margin-bottom: 10px;
+  }
+
+  .clNombreRegla{
+    margin-bottom: 20px;
+    width:300px;
+
+  }
+
+  .cltextArea{
+    width: 600px;
+    height: 200px;
+  }
+
+  .listaSeveridad{
+    margin-bottom: 10px;
+  }
+
+  .Programacion {
+    display: flex; /* Muestra los elementos en línea */
+    width: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .Programacion input,
+  .Programacion select {
+    flex: 1; /* Hace que los elementos ocupen el mismo espacio */
+    padding: 5px; /* Añade un espacio interno alrededor de los elementos */
+    border: 1px solid #ccc; /* Añade un borde alrededor de los elementos */
+    border-radius: 4px; /* Redondea las esquinas del borde */
+  }
+  
+  .Programacion select {
+    margin-left: -1px; /* Ajusta el margen izquierdo para evitar separación entre el input y el select */
+  }
+  
+  .Boton {
+    display: flex;
+    justify-content: space-between; /* Crea un espacio entre los botones */
+  }
+  
+  .Boton button {
+    margin: 10px; /* Agrega un margen entre los botones y el contenedor */
+  }
+  
+  #btn-cerrar-modal {
+    margin-right: auto; /* Coloca el botón de cerrar en la esquina superior izquierda */
+    margin-left: 0px
+  }
+  
+  #btn-guardar-modal {
+    margin-left: auto; /* Coloca el botón de guardar en la esquina superior derecha */
+    margin-right: 0px;
+  }
+  
+  .ListaFuente{
+    margin-bottom: 10px;
+  }

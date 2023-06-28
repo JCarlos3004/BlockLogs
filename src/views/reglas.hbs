@@ -5,12 +5,54 @@
 </head>
 
 <body>
+    <div id="loading" class="loading">Cargando...</div> 
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-4"><div class="Titulo"><h1>Reglas</h1></div></div>
                 <div class="col-lg-4"><div class="import-rules"><i class="fa-solid fa-file-import" style="color: #fcfcfc;"></i>&nbspImportar reglas</div></div>
-                <div class="col-lg-4"><div class="create-rules"><i class="fa-solid fa-plus" style="color: #fafafa;"></i>&nbspCrear regla</div></div>
+                <div class="col-lg-4"><div class="create-rules" id="create-rules-id"><i class="fa-solid fa-plus" style="color: #fafafa;"></i>&nbspCrear regla</div></div>
+                <dialog id="modal">
+                    <h2>Crear nueva regla</h2>
+                    <p>Fuente de datos</p>
+                    <div class="ListaFuente" id="idListFuente">
+                    </div>
+                    <p>Acerca de la regla</p>
+                    <div class="divNombreRegla">
+                        <input id="idNombreRegla" type="text" class="clNombreRegla" placeholder="Ingrese nombre de la regla" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                     <p>Descripcion</p>
+                    <div class="textArea">
+                        <textarea class="cltextArea" aria-label="With textarea" id="textArea"></textarea>
+                    </div>
+                    <p>Severidad por defecto</p>
+                    <div class="classSever">
+                        <select id="idSev" class="listaSeveridad">
+                            <option value="baja">Baja</option>
+                            <option value="media">Media</option>
+                            <option value="alta">Alta</option>
+                            <option value="severa">Severa</option>
+                        </select>
+                    </div>
+                    <p>Puntuacion de riesgo</p>
+                    <div class="prog">
+                    <input type="range" min="0" max="100" step="20" onchange="showRangeValue(this.value)">
+                    </div>
+                    <p id="rangeValue"></p>
+                    <p>Programacion</p>
+                    <div class="Programacion">
+                        <input type="number" name="" id="">
+                        <select id="Periodo" class="listaPeriodo">
+                            <option value="segundo">Segundo</option>
+                            <option value="minuto">Minuto</option>
+                            <option value="hora">Hora</option>
+                        </select>
+                    </div>
+                    <div class="Boton">
+                        <button class="btn btn-primary" id="btn-cerrar-modal">Cerrar</button>
+                        <button class="btn btn-primary" id="btn-guardar-modal">Guardar</button>
+                    </div>
+                </dialog>
             </div>
             <div class="row">
                 <div class="reglas">
@@ -47,59 +89,12 @@
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Fuera de Horario</td>
-                            <td>-</td>
-                            <td>Bajo</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Fuera del Pais</td>
-                            <td>-</td>
-                            <td>Bajo</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Acceso desde diferentes segmentos</td>
-                            <td>-</td>
-                            <td>Bajo</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Intentos fallidos</td>
-                            <td>-</td>
-                            <td>Bajo</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
+                    <tbody id="showrules">
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>    
-<script></script>
+    </div> 
+      
+<script src="/js/reglas.js"></script>
 </body>

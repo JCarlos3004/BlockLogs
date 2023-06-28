@@ -43,6 +43,7 @@ app.use('/block', require('./routes/blockRoute'));
 app.use('/logs',  require('./routes/logRoute'));
 app.use('/devices', require('./routes/dispositivosRoute'));
 app.use('/logssave', require('./routes/logsSaveRoute'));
+app.use('/reglas', require('./routes/ListReglasRouter.js'))
 
 //Statics Files
 app.use(express.static(path.join(__dirname, 'public')));
