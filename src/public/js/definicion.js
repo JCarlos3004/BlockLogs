@@ -129,7 +129,6 @@ function AgroupLogs(data){
     nuevoObjeto[clave] = resultado[clave];
   });
   const fechas0 = Object.keys(nuevoObjeto);
-  console.log(fechas0)
   const cantidadesCitrix = fechas0.map(fecha => nuevoObjeto[fecha]['CITRIX'] || 0);
   const cantidadesAmdocs = fechas0.map(fecha => nuevoObjeto[fecha]['AMDOCS'] || 0);
   return [fechas0, cantidadesCitrix, cantidadesAmdocs]

@@ -18,7 +18,7 @@ const getAll = async (req, res) => {
 const updateAll = async (req, res) => {
     try {
         const db   = await connect();
-        const collection = db.collection('Metricbeat');
+        const collection = db.collection('logsproc');
         const { data, numberOfBlocks } = req.body
         const updateLogs = data.map((item) => ({...item,bloque:numberOfBlocks}))
         for (const updatedItem of updateLogs) {

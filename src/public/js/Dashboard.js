@@ -6,6 +6,12 @@ async function UpdateDataGraph(){
         const data   = await data_0.json();
         const data_1 = await fetch('logs/getall');
         const data_2 = await data_1.json();
+        data_2.forEach((e) => {
+          e.timestamp =  e.timestamp.split(" ")[0]
+          let partes = e.timestamp.split("/");
+          e.timestamp = partes[0] + "-" + partes[1] + "-" + partes[2];
+        })
+        console.log(data_2)
         GraphLineBlock('#morris-area-chart-1', data);
         GraphLineBlock('#morris-area-chart-2', data);
         GraphBarLogs('#chartContainer', data_2);
@@ -36,7 +42,8 @@ function AlertTransCrit(data){
 
 //// FIN ALERTAS TRANSACCIONES CRITICAS ////
 function Agroupcrit(data){
-  const data_2 = data.map(item => ({ "criticidad" : item.criticidad, "cantidad" : 1 }));
+  const data_2 = data.map(item => ({ "criticidad" : item.casuistica, "cantidad" : 1 }));
+  console.log(data_2)
   const data_3 = data_2.reduce((sumTotal , {criticidad, cantidad}) => {sumTotal[criticidad] = (sumTotal[criticidad] || 0 ) + cantidad; return sumTotal; }, {})
   const arraycrit = Object.entries(data_3).map( ([criticidad]) => criticidad)
   const arraycant = Object.entries(data_3).map( ([,cantidad])   => cantidad)
@@ -93,9 +100,14 @@ function AgroupLogs(data){
       objetoFecha[sistema] = 0;
     });
   });
-  const fechas0 = Object.keys(resultado);
-  const cantidadesCitrix = fechas0.map(fecha => resultado[fecha]['Citrix'] || 0);
-  const cantidadesAmdocs = fechas0.map(fecha => resultado[fecha]['Amdocs'] || 0);
+  const clavesOrdenadas = Object.keys(resultado).sort();
+  const nuevoObjeto = {};
+  clavesOrdenadas.forEach((clave) => {
+    nuevoObjeto[clave] = resultado[clave];
+  });
+  const fechas0 = Object.keys(nuevoObjeto);
+  const cantidadesCitrix = fechas0.map(fecha => nuevoObjeto[fecha]['CITRIX'] || 0);
+  const cantidadesAmdocs = fechas0.map(fecha => nuevoObjeto[fecha]['AMDOCS'] || 0);
   return [fechas0, cantidadesCitrix, cantidadesAmdocs]
 }
 
@@ -160,7 +172,7 @@ function GraphLineBlock(id,data){
 function AgrupBarLogs(data){
   let countByDetalle = {};
         data.forEach((element) => {
-            var detalle = element.detalle;
+            var detalle = element.casuistica;
             if (countByDetalle[detalle]) {
                 countByDetalle[detalle]++;
             } else {
