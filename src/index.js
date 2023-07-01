@@ -20,6 +20,7 @@ app.engine('.hbs', exphbs.engine({
 app.set('view engine', '.hbs')
 
 //Middlewares
+app.use(express.json({ limit: '10mb' }));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,6 +45,7 @@ app.use('/logs',  require('./routes/logRoute'));
 app.use('/devices', require('./routes/dispositivosRoute'));
 app.use('/logssave', require('./routes/logsSaveRoute'));
 app.use('/reglas', require('./routes/ListReglasRouter.js'))
+app.use('/logsinproc', require('./routes/LogsSinProcRoute.js'))
 
 //Statics Files
 app.use(express.static(path.join(__dirname, 'public')));

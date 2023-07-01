@@ -1,91 +1,54 @@
-<head>
-    <!-- Custom CSS -->
-    <link href="css/alertas.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet"> 
-</head>
 
+<head>
+    <link href="css/transacciones1.css" rel="stylesheet">
+</head>
 <body>
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
-                <div class="Titulo"><h1>Alertas</h1></div>
-            <hr>
+                <div class="col-lg-12">
+                    <h1 class="page-header">Alertas</h1>
+                </div>
+                <!-- /.col-lg-12 -->
             </div>
+            <!-- /.row -->
             <div class="row">
-                <div class="Menu">
-                    <div class="col-lg-3 MenuBar1">
-                        <div>Alertas en funcionamiento <h1>0</h1></div>
-                    </div>
-                    <div class="col-lg-3 MenuBar1">
-                        <div>Alertas creadas <h1>0</h1></div>
-                    </div>
-                    <div class="col-lg-3 MenuBar1">
-                        <div>Alertas en proceso de modificacion <h1>0</h1></div>
-                    </div>
-                    <div class="col-lg-3 MenuBar2">
-                        <div class="divActualizar">
-                            <i class="fa-solid fa-arrows-rotate" style="color: #84d2e1;"></i>
-                            <div class="divTextoAct">Actualizar</div>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Lista de alertas generadas
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered ui celled table"  id="dataTables-example" >
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Timestamp</th>
+                                            <th>Usuario</th>
+                                            <th>Casuistica</th>
+                                            <th>Entidad</th>
+                                            <th>Sistema</th>
+                                            <th>Criticidad</th>
+                                            <!--
+                                            <th>Bloque</th>
+                                            <th>Estado</th>
+                                            -->
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyjs">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 crearAlerta">
-                    <div class="divcreacion">
-                        <i class="fa-solid fa-plus iconobusqueda" style="color: #27eb00;"></i>
-                        <div class="creacionTexto">Crear alerta</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 classSeveridad">
-                    <select class="optionseveridad">
-                        <option value="Todo">Severidad</option>
-                        <option value="bajo"><i class="fa-solid fa-circle"  style="color: #52e91c;"></i>Bajo</option>
-                        <option value="media"><i class="fa-solid fa-circle" style="color: #e9cf2b;"></i>Medio</option>
-                        <option value="alto"><i class="fa-solid fa-circle" style="color: #f57724;"></i>Alto</option>
-                        <option value="critico"><i class="fa-solid fa-circle" style="color: #eb1405;"></i>Crítico</option>
-                    </select>
-                </div>
-                <div class="col-lg-3 classEstado">
-                    <select class="optionestado">
-                        <option value="estado">Estados</option>
-                        <option value="abierto">En funcionamiento</option>
-                        <option value="progreso">En Progreso</option>
-                        <option value="deshabilitado">Deshabilitado</option>
-                    </select>
-                </div>
-                <div class="col-lg-3 classEtiqueta">
-                    <select class="optionetiquetas">
-                        <option value="etiqueta">Etiquetas</option>
-                        <option value="abierto">En funcionamiento</option>
-                        <option value="progreso">En Progreso</option>
-                        <option value="deshabilitado">Deshabilitado</option>
-                    </select>
-                </div>
-            </div>
-            <br><br>
-            <div class="row">
-                <div class="table-responsive">
-                    <table class="ui celled table display" style="width:100%" id="tablaAlertas">
-                        <thead class="thead">
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Etiquetas</th>
-                                <th>Comentarios</th>
-                                <th>Creado en</th>
-                                <th>Estado</th>
-                                <th>Severidad</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodycontent">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
-    <!-- Script -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add Reg to Table -->
     <script src="/js/alertas.js"></script>
+    <!-- End -->
 </body>
+</html>

@@ -1,0 +1,19 @@
+.classBaja {
+    background: linear-gradient(to right, green, lightgreen);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.classMedia {
+    background: linear-gradient(to right, yellow, lightyellow);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.classAlta {
+    background: linear-gradient(to right, orange, lightcoral);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.classSevera {
+    background: linear-gradient(to right, red, pink);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

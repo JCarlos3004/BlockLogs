@@ -1,8 +1,13 @@
 
 let cabeceras = []
 async function obtenerLogs(){
-  const logs = await fetch('/logs/getall');
+  const logs = await fetch('/logsinproc/getall');
   const data = await logs.json();
+  data.forEach((e) => {
+    e.timestamp =  e.timestamp.split(" ")[0]
+    let partes = e.timestamp.split("/");
+    e.timestamp = partes[0] + "-" + partes[1] + "-" + partes[2];
+  })
   GraphLogs("#GraficoData",data)
   let dataDispo    = document.getElementById("DataDisponible");
   let dataSelec    = document.getElementById("DataSeleccionada");
@@ -124,14 +129,16 @@ function AgroupLogs(data){
     nuevoObjeto[clave] = resultado[clave];
   });
   const fechas0 = Object.keys(nuevoObjeto);
-  const cantidadesCitrix = fechas0.map(fecha => nuevoObjeto[fecha]['Citrix'] || 0);
-  const cantidadesAmdocs = fechas0.map(fecha => nuevoObjeto[fecha]['Amdocs'] || 0);
+  console.log(fechas0)
+  const cantidadesCitrix = fechas0.map(fecha => nuevoObjeto[fecha]['CITRIX'] || 0);
+  const cantidadesAmdocs = fechas0.map(fecha => nuevoObjeto[fecha]['AMDOCS'] || 0);
   return [fechas0, cantidadesCitrix, cantidadesAmdocs]
 }
 
 function GraphLogs(id,data){
   const [fechas0, cantidadesCitrix, cantidadesAmdocs] = AgroupLogs(data)
   const sumaTotal = cantidadesCitrix.map((cantidadCitrix, index) => cantidadCitrix + cantidadesAmdocs[index]);
+  console.log(sumaTotal)
   let options = { series: [{ name: 'Logs', type: 'column', data: sumaTotal}], 
                            //{ name: 'Amdocs', type: 'column', data: cantidadesAmdocs},
                            //{ name: 'Total',  type: 'line',   data: sumaTotal }],
@@ -153,7 +160,7 @@ function GraphLogs(id,data){
 }
 
 async function GuardarInfo(information){
-  const logs = await fetch('/logs/getall');
+  const logs = await fetch('/logsinproc/getall');
   const data = await logs.json();
   const info = []
   let obj = {};

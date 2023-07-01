@@ -5,7 +5,7 @@ const connect  = require('../database/database');
 const getAll = async (req, res) => {
     try {
         const db         = await connect();
-        const collection = db.collection('Metricbeat');
+        const collection = db.collection('logsproc');
         const data       = await collection.find().toArray();
         res.send(JSON.stringify(data));
     }

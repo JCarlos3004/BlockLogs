@@ -38,12 +38,15 @@ router.get('/definicion', (req, res) => {
     res.render('definicion.hbs')
 })
 
-router.get('/alertas', (req,res) => {
-    res.render('alertas.hbs')
+router.get('/casos', (req,res) => {
+    res.render('casos.hbs')
 })
 
 router.get('/reglas', (req, res) => {
     res.render('reglas.hbs')
 })
 
+router.get('/alertas', (req,res) => {
+    res.render('alertas.hbs')
+})
 module.exports = router;
