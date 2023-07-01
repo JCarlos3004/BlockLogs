@@ -44,7 +44,7 @@ app.use('/logs',  require('./routes/logRoute'));
 app.use('/devices', require('./routes/dispositivosRoute'));
 app.use('/logssave', require('./routes/logsSaveRoute'));
 app.use('/reglas', require('./routes/ListReglasRouter.js'));
-//app.use('/logsinproc',  require('./routes/LogsSinProcRoute.js'));
+app.use('/logsinproc',  require('./routes/LogsSinProcRoute.js'));
 
 //Statics Files
 app.use(express.static(path.join(__dirname, 'public')));
