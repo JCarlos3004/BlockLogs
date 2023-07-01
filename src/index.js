@@ -20,7 +20,6 @@ app.engine('.hbs', exphbs.engine({
 app.set('view engine', '.hbs')
 
 //Middlewares
-//app.use(express.json({ limit: '10mb' }));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
