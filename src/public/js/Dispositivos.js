@@ -70,7 +70,7 @@ async function getDatabase(){
         let option       = document.createElement('td');
 
         id.innerHTML           = cont_1++
-        nombre.innerHTML       = "NodeBlock";
+        nombre.innerHTML       = "NodeBlock" + cont_1;
         gestor.innerHTML       = "MongoDB";
         //so.innerHTML           = device.OpSystem;
         LastConn.innerHTML     = "-"
