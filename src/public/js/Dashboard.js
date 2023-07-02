@@ -11,6 +11,9 @@ async function UpdateDataGraph(){
           let partes = e.timestamp.split("/");
           e.timestamp = partes[0] + "-" + partes[1] + "-" + partes[2];
         })
+        data_2.forEach((e) => {
+          e.casuistica =  e.casuistica.replace("ACCESOS ","")
+        })
         console.log(data_2)
         GraphLineBlock('#morris-area-chart-1', data);
         GraphLineBlock('#morris-area-chart-2', data);
@@ -54,17 +57,17 @@ function Agroupcrit(data){
 function GraphCriticidad(id, data){
   const [arraycrit, arraycant] = Agroupcrit(data);
   let options = { series: arraycant, 
-                   chart: { width: 440, type: 'donut', dropShadow: { enabled: true, color: '#111', top: -1, left: 3, blur: 3, opacity: 0.2 } },
+                   chart: { width: 510, type: 'donut', dropShadow: { enabled: true, color: '#111', top: -1, left: 3, blur: 3, opacity: 0.2 } },
                   stroke: { width: 0,},
              plotOptions: { pie: { donut: { labels: { show: true, total: { showAlways: false, show: true , label: 'Total de Logs' } } } } },
-                tooltip : { enabled: true, style: { fontSize: '12px' } },
+                tooltip : { enabled: true, style: { fontSize: '10px' } },
                   labels: arraycrit,
-              dataLabels: { dropShadow: { blur: 3, opacity: 0.8 } },
-                    fill: { type: 'solid', colors: ['#40C060', '#ffff00', '#ff0000'], hover: { fillOpacity : 1} },
-                  states: { hover: { filter: 'none' } },
+              dataLabels: { dropShadow: { blur: 3, opacity: 0.8 } , fontSize:'10px' },
+                    fill: { type: 'solid', colors: ['#40C060', '#ffff00', '#ff0000'], hover: { fillOpacity : 1}},
+                  states: { hover: { filter: 'none' }},
                    theme: { palette: 'palette1', monochrome: { enabled: true, color: '#FFC7A2', shadeTo: 'light', shadeIntensity: 0.65 }, paletteExtension: { colors: ['#ffff00', '#ff0000'] } },
                    title: { text: "Criticidad" },
-                  legend: { labels: { useSeriesColors: false }, markers: { fillColors: ['#40C060', '#ffff00', '#ff0000'] } },
+                  legend: { fontSize:'10px', labels: { useSeriesColors: false}, markers: { fillColors: ['#40C060', '#ffff00', '#ff0000'] } },
               responsive: [{ breakpoint: 480, options: { chart: { width: 200 }, legend: {  position: 'bottom' } } }] };
 
   var chart = new ApexCharts(document.querySelector(id), options);
@@ -195,7 +198,7 @@ function GraphBarLogs(id, data){
                plotOptions: { bar: { columnWidth: '45%', distributed: true } },
                 dataLabels: { enabled: false },
                     legend: { show: false },
-                     xaxis: { categories: Arraydetalle, labels: { style: { fontSize: '12px' } } }
+                     xaxis: { categories: Arraydetalle, labels: { style: { fontSize: '10px' } } }
                   };
     var chart = new ApexCharts(document.querySelector(id), options);
     chart.render();
