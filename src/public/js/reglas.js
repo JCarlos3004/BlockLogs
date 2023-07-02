@@ -29,7 +29,7 @@ const intervalId = setInterval(() => {
     getLogsSave();
     BoolLogsSave = false; // Actualiza el indicador después de la primera ejecución
   }
-}, 3000);
+}, 5000);
 
 function MakeRegla(){
     const nombreRegla = document.getElementById("idNombreRegla").value;
@@ -81,9 +81,21 @@ async function ShowRules(){
             td_3.innerHTML = e.ultejecucion
             td_4.innerHTML = e.ultrespuesta
             td_5.innerHTML = e.ultactualiza
-            td_6.innerHTML = '-'
-            td_7.innerHTML = '-'
-            td_8.innerHTML = '-'
+            td_6.innerHTML = '1'
+            td_7.innerHTML = `
+                              <label class="switch">
+                              <input type="checkbox" checked>
+                              <span class="slider round"></span>
+                              </label>
+                              `
+            td_8.innerHTML =  `
+                              <button class="btn bg-transparent border-0">
+                                <i class="fa-solid fa-pen-to-square" style="color: #0861fd;"></i>
+                              </button>
+                              <button class="btn bg-transparent border-0">
+                                <i class="fa-solid fa-trash" style="color: #fd1212;"></i>
+                              </button>
+                              `
             tr.appendChild(td_0)
             tr.appendChild(td)
             tr.appendChild(td_1)
@@ -107,7 +119,7 @@ async function ShowRules(){
         ShowRules();
         isFirstExecution = false; // Actualiza el indicador después de la primera ejecución
       }
-    }, 3000);
+    }, 5000);
 
 function showRangeValue(value) {
   document.getElementById("rangeValue").textContent = value;
